@@ -57,6 +57,16 @@
                             <div class="ratio ratio-16x9">
                               <iframe width="560" height="315" src="https://www.youtube.com/embed/Ki0mVpIs0zE?si=pUEZpkFdlvmMY1rL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                             </div>
+                            
+                                <p class="text-white-50">    
+                                Vaihtoehtoisesti joululaulu raskaampaan musiikkimakuun:
+                                </p>
+                                </div>
+                            
+                                <div class="ratio ratio-16x9">
+                              <iframe width="560" height="315" src="https://www.youtube.com/embed/Ki0mVpIs0zE?si=pUEZpkFdlvmMY1rL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </div>
+                           
 
                     </p>
                     </div>
@@ -64,18 +74,19 @@
         </section>
 
         <!-- saatiedot -->
-         <section class="about-section text-center" id="pukki">
-            <div class="container px-4 px-lg-5">
+        <div id="pukki" class="container px-4 px-lg-5"> 
+
+            
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-lg-8">
-                        <h2 class="text-white mb-4">Pääseekö pukki perille?</h2>
-                        <p class="text-white-50">
-                            Tästä näet, kuinka liukasta ulkona on. Joulupukille ja tontuille liukastumisvaroitukset, jotta lahjat varmasti saadaan toimitettua ajoissa ilman sairaalakäyntejä. Varaa joulukävelylle tarvittaessa nastakengät ja valpas mieli.
-                            
-</p>
+                       
+
+        </div>
+        </div>
+        </div>
                     
             <script>
-                fetch('https://liukastumisvaroitus-api.beze.io/api/v1/warnings')
+                fetch('https://api.openweathermap.org/data/2.5/weather?lang=fi&q=helsinki&units=metric&APPID=665ecd56dfc08dbb50feb8b8f5034e28')
                 .then(function (response) {
 return response.json();
 })
@@ -95,22 +106,26 @@ document.getElementById("pukki").innerHTML =
 function kerro(data){
     var teksti="";
     
-      teksti = teksti + "<h3>" + data.city + "<h3>";
+    teksti = teksti + "<p><br> Millaisessa säässä joulupukki ajelee rekeä pääkaupunkiseudulla? Onko näkyvyys tarpeeksi hyvä, vai tarvitaanko Petteri-poroa tiennäyttäjäksi? Katso tästä ajankohtaiset tiedot joko pukkia odotellessa tai itse tonttuilua suunnitellessa </p>";
+      
+      teksti = teksti  + "<p><br> Sään yleiskuvaus: "+ data.weather[0].main + "</p>";
+      teksti = teksti  + "<p> Näkyvyys: "+ data.visibility + "</p>";
+      teksti = teksti  + "<p>"+ "Lämpötila: " + data.main.temp + "&degC </p>";
+      teksti = teksti  + "<p>"+ "Ilmankosteus: " + data.main.humidity + "</p>";
 
-    
 
           
             
         
         
     
-     document.getElementById("pukki").innerHTML = teksti;
+     document.getElementById("pukki").innerHTML = teksti ;
 
 
 } 
             </script>
                 
-        </section>
+        
 
    
 
